@@ -26,6 +26,17 @@ export default function TextForm() {
         let tex = window.getSelection();
         navigator.clipboard.writeText(tex);
     }
+
+    const ExtraSpaces = () => {
+        // console.log(text);
+        // let str = text.toString();
+        // console.log(str);
+        let reg = /\s+/;
+        let str = text.trim().split(reg);
+        setText(str.join(" "))
+        // console.log(str);
+    }
+
     const Clear = () => {
         // let tex = document.getElementById("textArea");
         // let tex = "";
@@ -50,10 +61,11 @@ export default function TextForm() {
             <button type="button" className="btn btn-outline-primary m-3" onClick={toUpperCase}>To UpperCase</button>
             <button type="button" className="btn btn-outline-primary m-3" onClick={toLowerCase}>To LowerCase</button>
             <button type="button" className="btn btn-outline-primary m-3" onClick={CopyText}>Copy Text</button>
+            <button type="button" className="btn btn-outline-primary m-3" onClick={ExtraSpaces}>Remove extra spaces</button>
             <button type="button" className="btn btn-outline-primary m-3" onClick={Clear}>Clear</button>
 
-            <h4>Total Words : { text.split(" ")===""? 0:text.split(" ").length}</h4>
-            <span><h4>Total Characters : { text.length}</h4></span>
+            <h4>Total Words : {text.split(" ") == "" ? 0 : text.split(" ").length}</h4>
+            <span><h4>Total Characters : {text.length}</h4></span>
 
         </>
     );
