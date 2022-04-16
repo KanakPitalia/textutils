@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function TextForm() {
+export default function TextForm(props) {
     const [text, setText] = useState("");
 
     const toUpperCase = () => {
@@ -22,9 +22,10 @@ export default function TextForm() {
     }
 
     const CopyText = () => {
-        // let tex = document.getElementById("textArea");
-        let tex = window.getSelection();
-        navigator.clipboard.writeText(tex);
+        var text = document.getElementById("textArea");
+        text.select();
+        // let tex = window.getSelection();
+        navigator.clipboard.writeText(text.value);
     }
 
     const ExtraSpaces = () => {
@@ -51,10 +52,10 @@ export default function TextForm() {
     return (
         <>
 
-            <h1>Enter your text here</h1>
-            <div className="form-group">
-
-                <textarea className="form-control" id="textArea" rows="8" value={text} onChange={onChange}></textarea>
+            <h1 >Enter your text here</h1>
+            <div className="form-group" >
+    
+                <textarea className="form-control" style={props.mode == "dark" ? {backgroundColor:"rgb(25 28 32)",color:"white"} : {backgroundColor:"white",color:"black"}} id="textArea" rows="8" value={text} onChange={onChange}></textarea>
             </div>
 
             <button type="button" className="btn btn-outline-primary m-3" onClick={toCapitalize}>Capitalize sentence</button>
@@ -64,8 +65,8 @@ export default function TextForm() {
             <button type="button" className="btn btn-outline-primary m-3" onClick={ExtraSpaces}>Remove extra spaces</button>
             <button type="button" className="btn btn-outline-primary m-3" onClick={Clear}>Clear</button>
 
-            <h4>Total Words : {text.split(" ") == "" ? 0 : text.split(" ").length}</h4>
-            <span><h4>Total Characters : {text.length}</h4></span>
+            <h4 >Total Words : {text.split(" ") == "" ? 0 : text.trim().split(" ").length}</h4>
+            <span><h4 >Total Characters : {text.length}</h4></span>
 
         </>
     );
