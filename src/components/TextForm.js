@@ -51,23 +51,23 @@ export default function TextForm(props) {
 
     return (
         <>
+            <div className="container" style={props.mode == "dark" ? { backgroundColor: "rgb(25 28 32)", color: "white" } : { backgroundColor: "white", color: "black" }}>
+                <h1 >Enter your text here</h1>
+                <div className="form-group" >
 
-            <h1 >Enter your text here</h1>
-            <div className="form-group" >
-    
-                <textarea className="form-control" style={props.mode == "dark" ? {backgroundColor:"rgb(25 28 32)",color:"white"} : {backgroundColor:"white",color:"black"}} id="textArea" rows="8" value={text} onChange={onChange}></textarea>
+                    <textarea className="form-control" id="textArea" rows="8" value={text} onChange={onChange} style={props.mode == "dark" ? { backgroundColor: "rgb(25 28 32)", color: "white" } : { backgroundColor: "white", color: "black" }}></textarea>
+                </div>
+
+                <button type="button" className="btn btn-outline-primary m-3" onClick={toCapitalize}>Capitalize sentence</button>
+                <button type="button" className="btn btn-outline-primary m-3" onClick={toUpperCase}>To UpperCase</button>
+                <button type="button" className="btn btn-outline-primary m-3" onClick={toLowerCase}>To LowerCase</button>
+                <button type="button" className="btn btn-outline-primary m-3" onClick={CopyText}>Copy Text</button>
+                <button type="button" className="btn btn-outline-primary m-3" onClick={ExtraSpaces}>Remove extra spaces</button>
+                <button type="button" className="btn btn-outline-primary m-3" onClick={Clear}>Clear</button>
+
+                <h4 >Total Words : {text.split(" ") == "" ? 0 : text.trim().split(" ").length}</h4>
+                <span><h4 >Total Characters : {text.length}</h4></span>
             </div>
-
-            <button type="button" className="btn btn-outline-primary m-3" onClick={toCapitalize}>Capitalize sentence</button>
-            <button type="button" className="btn btn-outline-primary m-3" onClick={toUpperCase}>To UpperCase</button>
-            <button type="button" className="btn btn-outline-primary m-3" onClick={toLowerCase}>To LowerCase</button>
-            <button type="button" className="btn btn-outline-primary m-3" onClick={CopyText}>Copy Text</button>
-            <button type="button" className="btn btn-outline-primary m-3" onClick={ExtraSpaces}>Remove extra spaces</button>
-            <button type="button" className="btn btn-outline-primary m-3" onClick={Clear}>Clear</button>
-
-            <h4 >Total Words : {text.split(" ") == "" ? 0 : text.trim().split(" ").length}</h4>
-            <span><h4 >Total Characters : {text.length}</h4></span>
-
         </>
     );
 }
