@@ -3,6 +3,13 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
 import Alert from './components/Alert';
+import About from './components/About';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 
 
@@ -21,9 +28,9 @@ function App() {
       type: type
     })
     setTimeout(() => { setAlert(null) }, 1500);
-  
+
   }
-  
+
   // backgroundColor: "#191818"
 
 
@@ -33,13 +40,13 @@ function App() {
       document.body.style.backgroundColor = "rgb(25 28 32)";
       // document.body.style.color = "white";
       showAlert("DarkMode is enabled", "success");
-      
+
     }
     else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("LightMode is enabled", "success");
-      
+
       // document.body.style.color = "black";
     }
     // console.log(style.color);
@@ -54,17 +61,30 @@ function App() {
 
 
     // setMode(style);
-    
+
   }
 
   return (
     <>
 
+      <Router>
       <Navbar toggleMode={Mode} mode={mode} />
       <Alert alert={alert} />
-      <div className="container" mode={mode}>
-        <TextForm mode={mode} />
-      </div>
+        <Routes>
+            
+          <Route path="/textutils" element={<TextForm mode={mode}/>}>
+
+            
+          </Route>
+            
+          <Route exact path="/About" element={ <About mode={mode} />}>
+            
+          </Route>
+        </Routes>
+      </Router>
+
+
+
     </>
   );
 }
