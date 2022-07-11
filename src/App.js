@@ -68,17 +68,17 @@ function App() {
     <>
 
       <Router>
-      <Navbar toggleMode={Mode} mode={mode} />
-      <Alert alert={alert} />
+        <Navbar toggleMode={Mode} mode={mode} />
+        <Alert alert={alert} />
         <Routes>
-            
-          <Route path="/textutils" element={<TextForm mode={mode}/>}>
 
-            
+          <Route path="/textutils" element={<TextForm mode={mode} />}>
+
+
           </Route>
-            
-          <Route exact path="/About" element={ <About mode={mode} />}>
-            
+
+          <Route exact path="/About" element={<About mode={mode} />}>
+
           </Route>
         </Routes>
       </Router>

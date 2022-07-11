@@ -48,7 +48,14 @@ export default function TextForm(props) {
         // console.log(e.target.value);
         setText(event.target.value);
     }
-
+    const countOccurences = (string, word) => {
+        let c = document.getElementsByClassName("count");
+        c = string.split(word).length - 1;
+    }
+    const [word, SetWord] = useState("");
+    const onchain = (event) => {
+        SetWord(event.target.value)
+    }
     return (
         <>
             <div className="container" style={props.mode == "dark" ? { backgroundColor: "rgb(25 28 32)", color: "white" } : { backgroundColor: "white", color: "black" }}>
@@ -64,9 +71,23 @@ export default function TextForm(props) {
                 <button type="button" className="btn btn-outline-primary m-3" onClick={CopyText}>Copy Text</button>
                 <button type="button" className="btn btn-outline-primary m-3" onClick={ExtraSpaces}>Remove extra spaces</button>
                 <button type="button" className="btn btn-outline-primary m-3" onClick={Clear}>Clear</button>
+                {/* <form className="d-flex">
+                    <input className="form-control m-3" type="search" placeholder="Search" aria-label="Search" onChange={onchain} />
+                    <button className="btn btn-outline-success m-3" type="submit" onClick={() => {
+                        countOccurences(text, word)
+                    }}>Search</button>
+                </form>
+                <div className="container">
 
-                <h4 >Total Words : {text.split(" ") == "" ? 0 : text.trim().split(" ").length}</h4>
+                    <h3>Searched Element</h3>
+                    <h4 className="count"></h4>
+
+
+                </div> */}
+{/* /[\s\n]+/ */}
+                <h4 >Total Words : {text.split(/[\s\n]+/) == "" ? 0 : text.trim().split(/[\s\n]+/).length}</h4>
                 <span><h4 >Total Characters : {text.length}</h4></span>
+
             </div>
         </>
     );
